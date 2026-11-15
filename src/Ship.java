@@ -10,16 +10,16 @@ public class Ship {
 
     public Ship(ShipType type, List<Coordinate> coordinates, Orientation orientation) {
         Set<Coordinate> unique = Set.copyOf(coordinates);
-        if (unique.size() != type.getShipSize()
-                || coordinates.size() != unique.size()) {
-            throw new IllegalArgumentException(
-                    "Ship " + type + " needs exactly " + type.getShipSize()
-                            + " distinct coordinates");
+        if (unique.size() != type.getShipSize() || coordinates.size() != unique.size()) {
+            throw new IllegalArgumentException("Ship " + type + " needs exactly " + type.getShipSize() + " distinct coordinates");
         }
         this.type = type;
         this.coordinates = unique;
         this.orientation = orientation;
     }
+
+    public ShipType getType() {return type;}
+    public Set<Coordinate> getCoordinates() {return coordinates;}
 
     public boolean isOccupied(Coordinate c) {
         return coordinates.contains(c);
